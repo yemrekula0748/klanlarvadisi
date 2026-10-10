@@ -32,6 +32,10 @@ namespace KlanlarVadisi.Core
         [Header("Sunucu")]
         public string SunucuAdresi = "http://localhost:8000";
 
+        [Header("Gerçek zamanlı (Reverb)")]
+        public int ReverbPortu = 8080;
+        public string ReverbAnahtari = "klanlar-vadisi-anahtari";
+
         public Kip AktifKip { get; private set; } = Kip.Giris;
 
         private Camera _kamera;
@@ -86,11 +90,55 @@ namespace KlanlarVadisi.Core
 
         private void ApiKur()
         {
-            if (ApiClient.I != null) return;
+            if (ApiClient.I == null)
+            {
+                var go = new GameObject("ApiClient");
+                var api = go.AddComponent<ApiClient>();
+                api.BaseUrl = SunucuAdresi;
+            }
 
-            var go = new GameObject("ApiClient");
-            var api = go.AddComponent<ApiClient>();
-            api.BaseUrl = SunucuAdresi;
+            if (CanliBaglanti.I != null) return;
+
+            var canliGo = new GameObject("CanliBaglanti");
+            var canli = canliGo.AddComponent<CanliBaglanti>();
+
+            // Reverb adresi sunucu adresinden türetilir (varsayılan port 8080).
+            var uri = new System.Uri(ApiClient.I.BaseUrl);
+            canli.Host = uri.Host;
+            canli.Guvenli = uri.Scheme == "https";
+            canli.Port = ReverbPortu;
+            canli.AppKey = ReverbAnahtari;
+            canli.OlayGeldi += CanliOlay;
+        }
+
+        /// <summary>Sunucudan anlık gelen olaylar.</summary>
+        private void CanliOlay(string kanal, string olay, Dictionary<string, object> veri)
+        {
+            switch (olay)
+            {
+                case "oba.saldirildi":
+                {
+                    var saldiran = Util.MiniJson.AsDict(veri != null && veri.TryGetValue("attacker", out var a) ? a : null);
+                    var ad = Util.MiniJson.Str(saldiran, "name", "Biri");
+                    var yildiz = Util.MiniJson.Int(veri, "stars");
+                    Bildirim.Goster($"{ad} obana saldırdı — {yildiz} yıldız!", yildiz > 0);
+                    Tazele();
+                    break;
+                }
+
+                case "boy.sohbet":
+                {
+                    var oyuncu = Util.MiniJson.AsDict(veri != null && veri.TryGetValue("player", out var p) ? p : null);
+                    var ad = Util.MiniJson.Str(oyuncu, "name", "Boy");
+                    var metin = Util.MiniJson.Str(veri, "body", "");
+                    Bildirim.Goster($"{ad}: {metin}");
+                    break;
+                }
+
+                case "savas.guncelleme":
+                    Bildirim.Goster("Boy savaşında gelişme var.");
+                    break;
+            }
         }
 
         private void ArayuzKur()
@@ -204,6 +252,16 @@ namespace KlanlarVadisi.Core
             _ustBar.Guncelle(_durum);
 
             Bildirim.Goster($"Hoş geldin, {_durum.player.name}!");
+
+            // Canlı bağlantı: saldırı bildirimi ve boy sohbeti anında gelsin.
+            // Kurulamazsa oyun yoklama ile sürer.
+            if (CanliBaglanti.I != null)
+            {
+                CanliBaglanti.I.Baslat();
+                CanliBaglanti.I.KanalaKatil($"private-oyuncu.{_durum.player.id}");
+                if (_durum.player.clan != null)
+                    CanliBaglanti.I.KanalaKatil($"private-boy.{_durum.player.clan.id}");
+            }
 
             _tazeleme = StartCoroutine(DuzenliTazele());
         }

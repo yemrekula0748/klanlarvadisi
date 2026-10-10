@@ -140,6 +140,11 @@ Boy sohbeti ve saldırı bildirimleri için Laravel Reverb:
 php artisan reverb:start
 ```
 
+Unity tarafında `OyunBaslatici` nesnesindeki **Reverb Portu** (8080) ve
+**Reverb Anahtarı** (`REVERB_APP_KEY` ile aynı olmalı) alanları kullanılır;
+sunucu adresi `Sunucu Adresi` alanından türetilir. Reverb kapalıysa istemci
+sessizce yoklamaya düşer, oyun oynanmaya devam eder.
+
 ---
 
 ## Unity istemcisi
@@ -328,7 +333,7 @@ Her iki durumda da `game:balance` ile ölçün.
 ## Test
 
 ```bash
-php artisan test                    # 72 test, 3769 doğrulama
+php artisan test                    # 83 test, 3809 doğrulama
 php artisan test --filter=BattleTest
 ```
 

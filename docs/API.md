@@ -10,7 +10,20 @@ Bütün yanıtlar JSON'dur. Hata yanıtları şu biçimdedir:
 ```
 
 İstemci `code` alanına göre davranır; `message` doğrudan gösterilebilir
-(sunucu Türkçe üretir).
+(sunucu Türkçe üretir — çeviriler `lang/tr/` altındadır).
+
+Alan doğrulaması başarısız olursa `422` ve alan bazlı dökümle döner:
+
+```json
+{
+  "message": "e-posta geçerli bir e-posta adresi olmalıdır. (+2 hata daha)",
+  "code": "dogrulama",
+  "errors": {
+    "email": ["e-posta geçerli bir e-posta adresi olmalıdır."],
+    "password": ["şifre en az 8 karakter olmalıdır."]
+  }
+}
+```
 
 ## Hata kodları
 
@@ -34,6 +47,7 @@ Bütün yanıtlar JSON'dur. Hata yanıtları şu biçimdedir:
 | `saldiri_hakki_bitti` | Savaş saldırı hakkı kalmadı |
 | `izin_yok` | Yetki yok (403) |
 | `bulunamadi` | Kayıt yok (404) |
+| `dogrulama` | Alan doğrulaması başarısız (422), `errors` dolu |
 
 ---
 
@@ -227,5 +241,24 @@ Unity, Pusher protokolüyle Reverb'e bağlanır:
 | `private-oyuncu.{id}` | `oba.saldirildi` |
 | `private-boy.{id}` | `boy.sohbet`, `savas.guncelleme` |
 
-Yetkilendirme `/broadcasting/auth` üzerinden Sanctum belirteciyle yapılır.
+İstemci tarafı `Assets/Scripts/Net/CanliBaglanti.cs` içindedir: `ClientWebSocket`
+ile `ws(s)://{host}:{port}/app/{anahtar}` adresine bağlanır, `pusher:ping`
+iletilerine karşılık verir ve kopmada artan gecikmeyle yeniden bağlanır.
+
+Özel kanala katılmadan önce `/broadcasting/auth` çağrılır — bu uç `/api/v1`
+önekinin **dışındadır** ve Sanctum belirteciyle korunur:
+
+```http
+POST /broadcasting/auth
+Authorization: Bearer {belirteç}
+Content-Type: application/json
+
+{ "socket_id": "123.456", "channel_name": "private-oyuncu.7" }
+```
+
+Dönen `auth` imzası `pusher:subscribe` iletisine konur. Başka bir oyuncunun
+kanalı istenirse `403`, belirteç yoksa `401` döner.
+
 Reverb çalışmıyorsa oyun yine oynanır; istemci 20 saniyede bir durum çeker.
+WebGL yapısında `ClientWebSocket` kullanılamadığı için canlı katman kapalıdır
+ve oyun yalnızca bu yoklamayla ilerler.

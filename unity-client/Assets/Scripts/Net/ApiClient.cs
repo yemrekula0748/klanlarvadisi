@@ -157,6 +157,45 @@ namespace KlanlarVadisi.Net
             Action<string> ok, Action<ApiHatasi> err)
             => Istek(method, path, body, ok, err);
 
+        /// <summary>
+        /// Yayın (broadcasting) kanal yetkilendirmesi.
+        ///
+        /// Bu uç `/api/v1` önekinin dışındadır (`/broadcasting/auth`), bu
+        /// yüzden tam adresle ayrı bir istek yapılır.
+        /// </summary>
+        public IEnumerator YayinYetkisi(string socketId, string kanal,
+            Action<string> ok, Action<ApiHatasi> err)
+        {
+            var url = $"{BaseUrl.TrimEnd('/')}/broadcasting/auth";
+            var govde = MiniJson.Serialize(new Dictionary<string, object>
+            {
+                ["socket_id"] = socketId,
+                ["channel_name"] = kanal,
+            });
+
+            using var req = new UnityWebRequest(url, "POST");
+            req.timeout = ZamanAsimi;
+            req.downloadHandler = new DownloadHandlerBuffer();
+            req.uploadHandler = new UploadHandlerRaw(Encoding.UTF8.GetBytes(govde));
+            req.SetRequestHeader("Content-Type", "application/json");
+            req.SetRequestHeader("Accept", "application/json");
+            if (GirisYapildi) req.SetRequestHeader("Authorization", "Bearer " + Token);
+
+            yield return req.SendWebRequest();
+
+            if (req.result == UnityWebRequest.Result.Success)
+            {
+                ok?.Invoke(req.downloadHandler.text);
+                yield break;
+            }
+
+            err?.Invoke(new ApiHatasi
+            {
+                message = $"Kanal yetkisi alınamadı ({req.responseCode}).",
+                code = "yayin_yetkisi",
+            });
+        }
+
         /* ------------------------------------------------------------------ */
         /* Giriş                                                               */
         /* ------------------------------------------------------------------ */
