@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="280" height="252"
+    viewBox="0 0 280 252">
+
+  <defs>
+    <filter id="yumusak" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4"/>
+    </filter>
+    <filter id="cokYumusak" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="9"/>
+    </filter>
+    <filter id="hafifYumusak" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1.6"/>
+    </filter>
+    <filter id="parilti" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="6" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Taş dokusu: ince gürültü -->
+    <filter id="tasDoku" x="0%" y="0%" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" seed="7" result="n"/>
+      <feColorMatrix in="n" type="saturate" values="0" result="g"/>
+      <feComposite in="SourceGraphic" in2="g" operator="arithmetic"
+        k1="0.18" k2="0.86" k3="0" k4="0"/>
+    </filter>
+
+    <!-- Keçe dokusu: yumuşak lekeler -->
+    <filter id="keceDoku" x="0%" y="0%" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="4" seed="3" result="n"/>
+      <feColorMatrix in="n" type="saturate" values="0" result="g"/>
+      <feComposite in="SourceGraphic" in2="g" operator="arithmetic"
+        k1="0.10" k2="0.93" k3="0" k4="0"/>
+    </filter>
+
+    <linearGradient id="gokIsik" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.30"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+
+    <radialGradient id="atesIsik" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ffd98a" stop-opacity="0.95"/>
+      <stop offset="0.5" stop-color="#f2763a" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#f2763a" stop-opacity="0"/>
+    </radialGradient>
+
+    <radialGradient id="buyuIsik" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.9"/>
+      <stop offset="0.45" stop-color="#8ad7ff" stop-opacity="0.6"/>
+      <stop offset="1" stop-color="#8ad7ff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <g transform="translate(140,112)">
+
+    <ellipse cx="0" cy="66" rx="117.76" ry="58.88"
+      fill="#1b1206" opacity="0.3" filter="url(#yumusak)"/>
+    
+    <g opacity="1">
+      <path d="M0,0 L-108.8,54.4 L-108.8,49.4 L0,-5 Z" fill="#7e623f"/>
+      <path d="M-108.8,54.4 L0,108.8 L0,103.8 L-108.8,49.4 Z" fill="#5d492f"/>
+      <path d="M0,-5 L108.8,49.4 L0,103.8 L-108.8,49.4 Z" fill="#a38c6e"/>
+    </g>
+    <!-- Dengede duran kaya -->
+    <path d="M-34,58 l9,-30 l24,-13 l27,16 l6,27 Z" fill="#7d7569"/>
+    <path d="M-34,58 l9,-30 l24,-13 l2,25 Z" fill="#928b81"/>
+    <!-- Kıl ipi -->
+    <path d="M-36,62 q36,10 72,-2" stroke="#d6bd86"
+      stroke-width="2" fill="none" stroke-dasharray="4 3"/>
+  
+  </g>
+</svg>

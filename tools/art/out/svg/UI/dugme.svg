@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="80"
+    viewBox="0 0 160 80">
+
+  <defs>
+    <filter id="yumusak" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4"/>
+    </filter>
+    <filter id="cokYumusak" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="9"/>
+    </filter>
+    <filter id="hafifYumusak" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1.6"/>
+    </filter>
+    <filter id="parilti" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="6" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Taş dokusu: ince gürültü -->
+    <filter id="tasDoku" x="0%" y="0%" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" seed="7" result="n"/>
+      <feColorMatrix in="n" type="saturate" values="0" result="g"/>
+      <feComposite in="SourceGraphic" in2="g" operator="arithmetic"
+        k1="0.18" k2="0.86" k3="0" k4="0"/>
+    </filter>
+
+    <!-- Keçe dokusu: yumuşak lekeler -->
+    <filter id="keceDoku" x="0%" y="0%" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="4" seed="3" result="n"/>
+      <feColorMatrix in="n" type="saturate" values="0" result="g"/>
+      <feComposite in="SourceGraphic" in2="g" operator="arithmetic"
+        k1="0.10" k2="0.93" k3="0" k4="0"/>
+    </filter>
+
+    <linearGradient id="gokIsik" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.30"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+
+    <radialGradient id="atesIsik" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ffd98a" stop-opacity="0.95"/>
+      <stop offset="0.5" stop-color="#f2763a" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#f2763a" stop-opacity="0"/>
+    </radialGradient>
+
+    <radialGradient id="buyuIsik" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.9"/>
+      <stop offset="0.45" stop-color="#8ad7ff" stop-opacity="0.6"/>
+      <stop offset="1" stop-color="#8ad7ff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+
+  <rect x="4" y="4" width="152" height="72" rx="14" fill="#b7362c"
+    stroke="#e0a63c" stroke-width="3.4"/>
+  <rect x="10" y="10" width="140" height="26" rx="10" fill="#ffffff" opacity="0.16"/>
+  <path d="M15,44.4
+                   C15,34.5 23.8,32.3 26,37.8
+                   C28.2,32.3 37,34.5 37,44.4"
+      fill="none" stroke="#e0a63c" stroke-width="2.2" stroke-linecap="round"/>
+  <path d="M123,44.4
+                   C123,34.5 131.8,32.3 134,37.8
+                   C136.2,32.3 145,34.5 145,44.4"
+      fill="none" stroke="#e0a63c" stroke-width="2.2" stroke-linecap="round"/>
+</svg>

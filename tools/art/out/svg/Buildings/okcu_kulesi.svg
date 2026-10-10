@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="408" height="456"
+    viewBox="0 0 408 456">
+
+  <defs>
+    <filter id="yumusak" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4"/>
+    </filter>
+    <filter id="cokYumusak" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="9"/>
+    </filter>
+    <filter id="hafifYumusak" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1.6"/>
+    </filter>
+    <filter id="parilti" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="6" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Taş dokusu: ince gürültü -->
+    <filter id="tasDoku" x="0%" y="0%" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" seed="7" result="n"/>
+      <feColorMatrix in="n" type="saturate" values="0" result="g"/>
+      <feComposite in="SourceGraphic" in2="g" operator="arithmetic"
+        k1="0.18" k2="0.86" k3="0" k4="0"/>
+    </filter>
+
+    <!-- Keçe dokusu: yumuşak lekeler -->
+    <filter id="keceDoku" x="0%" y="0%" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="4" seed="3" result="n"/>
+      <feColorMatrix in="n" type="saturate" values="0" result="g"/>
+      <feComposite in="SourceGraphic" in2="g" operator="arithmetic"
+        k1="0.10" k2="0.93" k3="0" k4="0"/>
+    </filter>
+
+    <linearGradient id="gokIsik" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.30"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+
+    <radialGradient id="atesIsik" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ffd98a" stop-opacity="0.95"/>
+      <stop offset="0.5" stop-color="#f2763a" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#f2763a" stop-opacity="0"/>
+    </radialGradient>
+
+    <radialGradient id="buyuIsik" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.9"/>
+      <stop offset="0.45" stop-color="#8ad7ff" stop-opacity="0.6"/>
+      <stop offset="1" stop-color="#8ad7ff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <g transform="translate(204,252)">
+
+    <ellipse cx="0" cy="98" rx="176.64" ry="88.32"
+      fill="#1b1206" opacity="0.3" filter="url(#yumusak)"/>
+    
+    <g opacity="1">
+      <path d="M0,0 L-147.2,73.6 L-147.2,65.6 L0,-8 Z" fill="#5a544a"/>
+      <path d="M-147.2,73.6 L0,147.2 L0,139.2 L-147.2,65.6 Z" fill="#433e36"/>
+      <path d="M0,-8 L147.2,65.6 L0,139.2 L-147.2,65.6 Z" fill="#7b756c"/>
+    </g>
+    <g filter="url(#tasDoku)"><g><g><path d="M-88.32,88
+      L-88.32,-6
+      A88.32,44.16 0 0 1 88.32,-6
+      L88.32,88
+      A88.32,44.16 0 0 0 -88.32,88 Z"
+      fill="#857d71"/><path d="M-88.32,88
+      L-88.32,-6
+      A88.32,44.16 0 0 1 0,-50.16
+      L0,132.16 Z"
+      fill="#a59d93" opacity="0.6"/><path d="M88.32,88
+      L88.32,-6
+      A88.32,44.16 0 0 0 0,-50.16
+      L0,132.16 Z"
+      fill="#5e584f" opacity="0.55"/><path d="M-88.32,64.5 A88.32,44.16 0 0 0 88.32,64.5"
+        fill="none" stroke="#524d46" stroke-width="2" opacity="0.5"/><path d="M-88.32,41 A88.32,44.16 0 0 0 88.32,41"
+        fill="none" stroke="#524d46" stroke-width="2" opacity="0.5"/><path d="M-88.32,17.5 A88.32,44.16 0 0 0 88.32,17.5"
+        fill="none" stroke="#524d46" stroke-width="2" opacity="0.5"/><ellipse cx="0" cy="-6" rx="88.32" ry="44.16"
+      fill="#aba59b"/></g><rect x="81.32" y="-22" width="14" height="18" rx="2"
+        fill="#6e6860"/><rect x="48.07" y="12.53" width="14" height="18" rx="2"
+        fill="#6e6860"/><rect x="-26.65" y="21.05" width="14" height="18" rx="2"
+        fill="#a7a097"/><rect x="-86.57" y="-2.84" width="14" height="18" rx="2"
+        fill="#a7a097"/><rect x="-86.57" y="-41.16" width="14" height="18" rx="2"
+        fill="#a7a097"/><rect x="-26.65" y="-65.05" width="14" height="18" rx="2"
+        fill="#a7a097"/><rect x="48.07" y="-56.53" width="14" height="18" rx="2"
+        fill="#6e6860"/></g></g>
+    
+    <g>
+      <path d="M0,-142.4 L147.2,-68.8 L0,-122.8 Z" fill="#a05e5a"/>
+      <path d="M147.2,-68.8 L0,4.8 L0,-122.8 Z" fill="#5e1b18"/>
+      <path d="M0,4.8 L-147.2,-68.8 L0,-122.8 Z" fill="#4a1513"/>
+      <path d="M-147.2,-68.8 L0,-142.4 L0,-122.8 Z" fill="#822924"/>
+    </g>
+    <!-- Okçu mazgalı -->
+    <rect x="-4" y="26" width="8" height="22" rx="3" fill="#140e06"/>
+    <g transform="translate(0,62) scale(1)">
+      <path d="M-8,6 L8,-6 M4,-6 L8,-6 L8,-2 M-8,-6 C-2,-6 -6,6 0,6" fill="none" stroke="#e0a63c" stroke-width="1.9"
+        stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    
+    <g>
+      <rect x="-1.6" y="-88" width="3.2" height="36"
+        rx="1.4" fill="#5a4632"/>
+      <circle cx="0" cy="-91" r="3.4" fill="#e0a63c"/>
+      <path d="M1.6,-84
+               L30,-77
+               L22,-70
+               L30,-63
+               L1.6,-60 Z"
+        fill="#b7362c"/>
+      <path d="M1.6,-84
+               L30,-77
+               L22,-70"
+        fill="#c7625a" opacity="0.6"/>
+      <!-- At kılı püskülü -->
+      <path d="M-1,-86 q-7,8 -3,16 M-1,-86 q-3,9 1,17"
+        stroke="#2b2118" stroke-width="1.6" fill="none" opacity="0.8"/>
+    </g>
+  
+  </g>
+</svg>

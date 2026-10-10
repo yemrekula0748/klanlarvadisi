@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="96" height="112"
+    viewBox="0 0 96 112">
+
+  <defs>
+    <filter id="yumusak" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4"/>
+    </filter>
+    <filter id="cokYumusak" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="9"/>
+    </filter>
+    <filter id="hafifYumusak" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1.6"/>
+    </filter>
+    <filter id="parilti" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="6" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Taş dokusu: ince gürültü -->
+    <filter id="tasDoku" x="0%" y="0%" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" seed="7" result="n"/>
+      <feColorMatrix in="n" type="saturate" values="0" result="g"/>
+      <feComposite in="SourceGraphic" in2="g" operator="arithmetic"
+        k1="0.18" k2="0.86" k3="0" k4="0"/>
+    </filter>
+
+    <!-- Keçe dokusu: yumuşak lekeler -->
+    <filter id="keceDoku" x="0%" y="0%" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="4" seed="3" result="n"/>
+      <feColorMatrix in="n" type="saturate" values="0" result="g"/>
+      <feComposite in="SourceGraphic" in2="g" operator="arithmetic"
+        k1="0.10" k2="0.93" k3="0" k4="0"/>
+    </filter>
+
+    <linearGradient id="gokIsik" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.30"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+
+    <radialGradient id="atesIsik" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ffd98a" stop-opacity="0.95"/>
+      <stop offset="0.5" stop-color="#f2763a" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#f2763a" stop-opacity="0"/>
+    </radialGradient>
+
+    <radialGradient id="buyuIsik" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.9"/>
+      <stop offset="0.45" stop-color="#8ad7ff" stop-opacity="0.6"/>
+      <stop offset="1" stop-color="#8ad7ff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+
+      <ellipse cx="48" cy="104" rx="24" ry="8.64"
+        fill="#1b1206" opacity="0.3" filter="url(#hafifYumusak)"/>
+      <ellipse cx="48" cy="76" rx="30" ry="34" fill="url(#buyuIsik)"/>
+      
+  <g>
+    
+    <!-- Arka bacaklar (koyu) -->
+    
+      <path d="M54.4,85.41
+        q-2,11.4 1,19 l5,0
+        q2,-19 0,-30.4 Z" fill="#88909a"/>
+      <path d="M67.2,85.41
+        q-2,11.4 1,19 l5,0
+        q2,-19 0,-30.4 Z" fill="#88909a"/>
+    
+      <path d="M28.8,85.41
+        q2,11.4 -1,19 l-5,0
+        q-2,-19 0,-30.4 Z" fill="#88909a"/>
+      <path d="M40.32,85.41
+        q2,11.4 -1,19 l-5,0
+        q-2,-19 0,-30.4 Z" fill="#88909a"/>
+
+    <!-- Gövde -->
+    <path d="M28.4,80.24
+      C32.4,60.86 60.8,61.51
+       72.16,75.07
+      C76.16,89.28 48,99.62
+       28.4,87.99 Z" fill="#aeb8c6"/>
+    <!-- Karın -->
+    <path d="M36.4,87.35
+      q19.2,10.34 38.4,-1.29
+      q-19.2,6.46 -38.4,1.29 Z"
+      fill="#e2e8ef" opacity="0.8"/>
+
+    <!-- Ön bacaklar (açık) -->
+    
+      <path d="M33.92,86.7
+        q1,11.4 -1,19 l5,0
+        q1,-19 1,-30.4 Z" fill="#b9c2ce"/>
+      <path d="M45.44,86.7
+        q1,11.4 -1,19 l5,0
+        q1,-19 1,-30.4 Z" fill="#b9c2ce"/>
+
+    <!-- Boyun ve baş -->
+    <path d="M34.4,69.9
+      q-10,-3.8 -14,9.5
+      q2,11.4 14,7.6 Z" fill="#b9c2ce"/>
+    <ellipse cx="22.4" cy="68.84" rx="11.4" ry="9.88" fill="#b9c2ce"/>
+    <!-- Burun -->
+    <path d="M12.52,69.6
+      q-9.88,1.9 -11.4,6.08
+      q7.6,3.8 12.92,-0.76 Z" fill="#aeb8c6"/>
+    <circle cx="2.64" cy="74.16" r="2.09" fill="#1b1206"/>
+    <!-- Ağız -->
+    <path d="M4.16,77.2 l6.84,1.14"
+      stroke="#1b1206" stroke-width="1.3" stroke-linecap="round"/>
+    <!-- Göz -->
+    <ellipse cx="19.36" cy="68.08"
+      rx="2.85" ry="2.09" fill="#ffd166"/>
+    <circle cx="19.36" cy="68.08" r="1.06" fill="#1b1206"/>
+    <!-- Kulaklar -->
+    <path d="M20.12,60.48 l-1.52,-9.88
+      l6.46,5.32 Z" fill="#88909a"/>
+    <path d="M28.48,61.62 l1.9,-9.12
+      l4.18,7.6 Z" fill="#88909a"/>
+
+    <path d="M30.4,66.67
+      q10.24,-8.36 19.2,0.76
+      q-9.6,6.08 -19.2,-0.76 Z"
+      fill="#8e99a8"/>
+
+    <!-- Kuyruk -->
+    <path d="M70.16,76.36
+      q19,-9.5 23.56,-26.6
+      q-3.8,28.5 -17.1,36.1 Z" fill="#88909a"/>
+  
+    <!-- Gök tüyü/ışık -->
+    <path d="M18,60 q16,-12 30,-6" stroke="#7fd4e8"
+      stroke-width="2.2" fill="none" opacity="0.8"/>
+    <circle cx="21" cy="78" r="2.6" fill="#ffd166"/>
+  </g>
+    
+</svg>

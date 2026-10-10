@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="408" height="366"
+    viewBox="0 0 408 366">
+
+  <defs>
+    <filter id="yumusak" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4"/>
+    </filter>
+    <filter id="cokYumusak" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="9"/>
+    </filter>
+    <filter id="hafifYumusak" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1.6"/>
+    </filter>
+    <filter id="parilti" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="6" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Taş dokusu: ince gürültü -->
+    <filter id="tasDoku" x="0%" y="0%" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" seed="7" result="n"/>
+      <feColorMatrix in="n" type="saturate" values="0" result="g"/>
+      <feComposite in="SourceGraphic" in2="g" operator="arithmetic"
+        k1="0.18" k2="0.86" k3="0" k4="0"/>
+    </filter>
+
+    <!-- Keçe dokusu: yumuşak lekeler -->
+    <filter id="keceDoku" x="0%" y="0%" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="4" seed="3" result="n"/>
+      <feColorMatrix in="n" type="saturate" values="0" result="g"/>
+      <feComposite in="SourceGraphic" in2="g" operator="arithmetic"
+        k1="0.10" k2="0.93" k3="0" k4="0"/>
+    </filter>
+
+    <linearGradient id="gokIsik" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.30"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+
+    <radialGradient id="atesIsik" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ffd98a" stop-opacity="0.95"/>
+      <stop offset="0.5" stop-color="#f2763a" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#f2763a" stop-opacity="0"/>
+    </radialGradient>
+
+    <radialGradient id="buyuIsik" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.9"/>
+      <stop offset="0.45" stop-color="#8ad7ff" stop-opacity="0.6"/>
+      <stop offset="1" stop-color="#8ad7ff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <g transform="translate(204,162)">
+
+    <ellipse cx="0" cy="98" rx="176.64" ry="88.32"
+      fill="#1b1206" opacity="0.3" filter="url(#yumusak)"/>
+    
+    <g opacity="1">
+      <path d="M0,0 L-147.2,73.6 L-147.2,66.6 L0,-7 Z" fill="#5a544a"/>
+      <path d="M-147.2,73.6 L0,147.2 L0,140.2 L-147.2,66.6 Z" fill="#433e36"/>
+      <path d="M0,-7 L147.2,66.6 L0,140.2 L-147.2,66.6 Z" fill="#7b756c"/>
+    </g>
+    
+    <g>
+      
+    <g opacity="1">
+      <path d="M0,-7 L-112,49 L-112,9 L0,-47 Z" fill="#404750"/>
+      <path d="M-112,49 L0,105 L0,65 L-112,9 Z" fill="#30343b"/>
+      <path d="M0,-47 L112,9 L0,65 L-112,9 Z" fill="#6f747c"/>
+    </g>
+      
+    <g>
+      <path d="M0,-55.96 L129.92,9 L0,-27 Z" fill="#9298a1"/>
+      <path d="M129.92,9 L0,73.96 L0,-27 Z" fill="#50565f"/>
+      <path d="M0,73.96 L-129.92,9 L0,-27 Z" fill="#3f434a"/>
+      <path d="M-129.92,9 L0,-55.96 L0,-27 Z" fill="#6f7783"/>
+    </g>
+    </g>
+    <g>
+    <path d="M-21,106 l3.15,-7.35
+          h16.8 l3.15,7.35 Z"
+        fill="#8f9aa8" stroke="#5d646d" stroke-width="0.9"/><path d="M-2.1,106 l3.15,-7.35
+          h16.8 l3.15,7.35 Z"
+        fill="#8f9aa8" stroke="#5d646d" stroke-width="0.9"/><path d="M-21,96.55 l3.15,-7.35
+          h16.8 l3.15,7.35 Z"
+        fill="#8f9aa8" stroke="#5d646d" stroke-width="0.9"/><path d="M-2.1,96.55 l3.15,-7.35
+          h16.8 l3.15,7.35 Z"
+        fill="#8f9aa8" stroke="#5d646d" stroke-width="0.9"/>
+  </g>
+    <g>
+    <path d="M-48.4,118 l2.16,-5.04
+          h11.52 l2.16,5.04 Z"
+        fill="#8f9aa8" stroke="#5d646d" stroke-width="0.9"/><path d="M-35.44,118 l2.16,-5.04
+          h11.52 l2.16,5.04 Z"
+        fill="#8f9aa8" stroke="#5d646d" stroke-width="0.9"/><path d="M-48.4,111.52 l2.16,-5.04
+          h11.52 l2.16,5.04 Z"
+        fill="#8f9aa8" stroke="#5d646d" stroke-width="0.9"/><path d="M-35.44,111.52 l2.16,-5.04
+          h11.52 l2.16,5.04 Z"
+        fill="#8f9aa8" stroke="#5d646d" stroke-width="0.9"/>
+  </g>
+  
+  </g>
+</svg>

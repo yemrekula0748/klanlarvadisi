@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160"
+    viewBox="0 0 160 160">
+
+  <defs>
+    <filter id="yumusak" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4"/>
+    </filter>
+    <filter id="cokYumusak" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="9"/>
+    </filter>
+    <filter id="hafifYumusak" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1.6"/>
+    </filter>
+    <filter id="parilti" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="6" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Taş dokusu: ince gürültü -->
+    <filter id="tasDoku" x="0%" y="0%" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" seed="7" result="n"/>
+      <feColorMatrix in="n" type="saturate" values="0" result="g"/>
+      <feComposite in="SourceGraphic" in2="g" operator="arithmetic"
+        k1="0.18" k2="0.86" k3="0" k4="0"/>
+    </filter>
+
+    <!-- Keçe dokusu: yumuşak lekeler -->
+    <filter id="keceDoku" x="0%" y="0%" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="4" seed="3" result="n"/>
+      <feColorMatrix in="n" type="saturate" values="0" result="g"/>
+      <feComposite in="SourceGraphic" in2="g" operator="arithmetic"
+        k1="0.10" k2="0.93" k3="0" k4="0"/>
+    </filter>
+
+    <linearGradient id="gokIsik" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.30"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+
+    <radialGradient id="atesIsik" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ffd98a" stop-opacity="0.95"/>
+      <stop offset="0.5" stop-color="#f2763a" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#f2763a" stop-opacity="0"/>
+    </radialGradient>
+
+    <radialGradient id="buyuIsik" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.9"/>
+      <stop offset="0.45" stop-color="#8ad7ff" stop-opacity="0.6"/>
+      <stop offset="1" stop-color="#8ad7ff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+
+  <rect x="4" y="4" width="152" height="152" rx="16" fill="#2b2620"
+    stroke="#a8762a" stroke-width="4"/>
+  <rect x="12" y="12" width="136" height="136" rx="10" fill="none"
+    stroke="#7b5b21" stroke-width="1.6" opacity="0.8"/>
+  <g><rect x="12" y="12" width="136" height="12" fill="#7f2520"/><path d="M20.5,13.92 L24.58,18 L20.5,22.08 L16.42,18 Z"
+      fill="#e0a63c"/><path d="M37.5,13.92 L41.58,18 L37.5,22.08 L33.42,18 Z"
+      fill="#e0a63c"/><path d="M54.5,13.92 L58.58,18 L54.5,22.08 L50.42,18 Z"
+      fill="#e0a63c"/><path d="M71.5,13.92 L75.58,18 L71.5,22.08 L67.42,18 Z"
+      fill="#e0a63c"/><path d="M88.5,13.92 L92.58,18 L88.5,22.08 L84.42,18 Z"
+      fill="#e0a63c"/><path d="M105.5,13.92 L109.58,18 L105.5,22.08 L101.42,18 Z"
+      fill="#e0a63c"/><path d="M122.5,13.92 L126.58,18 L122.5,22.08 L118.42,18 Z"
+      fill="#e0a63c"/><path d="M139.5,13.92 L143.58,18 L139.5,22.08 L135.42,18 Z"
+      fill="#e0a63c"/><rect x="12" y="12" width="136" height="1.4" fill="#e0a63c" opacity="0.75"/><rect x="12" y="22.6" width="136" height="1.4" fill="#e0a63c" opacity="0.6"/></g>
+  <g><rect x="12" y="136" width="136" height="12" fill="#7f2520"/><path d="M20.5,137.92 L24.58,142 L20.5,146.08 L16.42,142 Z"
+      fill="#e0a63c"/><path d="M37.5,137.92 L41.58,142 L37.5,146.08 L33.42,142 Z"
+      fill="#e0a63c"/><path d="M54.5,137.92 L58.58,142 L54.5,146.08 L50.42,142 Z"
+      fill="#e0a63c"/><path d="M71.5,137.92 L75.58,142 L71.5,146.08 L67.42,142 Z"
+      fill="#e0a63c"/><path d="M88.5,137.92 L92.58,142 L88.5,146.08 L84.42,142 Z"
+      fill="#e0a63c"/><path d="M105.5,137.92 L109.58,142 L105.5,146.08 L101.42,142 Z"
+      fill="#e0a63c"/><path d="M122.5,137.92 L126.58,142 L122.5,146.08 L118.42,142 Z"
+      fill="#e0a63c"/><path d="M139.5,137.92 L143.58,142 L139.5,146.08 L135.42,142 Z"
+      fill="#e0a63c"/><rect x="12" y="136" width="136" height="1.4" fill="#e0a63c" opacity="0.75"/><rect x="12" y="146.6" width="136" height="1.4" fill="#e0a63c" opacity="0.6"/></g>
+  <g transform="translate(20,20)">
+      <path d="M-7,0 L0,-7 L7,0 L0,7 Z" fill="none"
+        stroke="#e0a63c" stroke-width="2.2"/>
+      <path d="M-3.5,0 L0,-3.5 L3.5,0 L0,3.5 Z" fill="none"
+        stroke="#e0a63c" stroke-width="1.7600000000000002" opacity="0.8"/>
+    </g>
+  <g transform="translate(140,20)">
+      <path d="M-7,0 L0,-7 L7,0 L0,7 Z" fill="none"
+        stroke="#e0a63c" stroke-width="2.2"/>
+      <path d="M-3.5,0 L0,-3.5 L3.5,0 L0,3.5 Z" fill="none"
+        stroke="#e0a63c" stroke-width="1.7600000000000002" opacity="0.8"/>
+    </g>
+  <g transform="translate(20,140)">
+      <path d="M-7,0 L0,-7 L7,0 L0,7 Z" fill="none"
+        stroke="#e0a63c" stroke-width="2.2"/>
+      <path d="M-3.5,0 L0,-3.5 L3.5,0 L0,3.5 Z" fill="none"
+        stroke="#e0a63c" stroke-width="1.7600000000000002" opacity="0.8"/>
+    </g>
+  <g transform="translate(140,140)">
+      <path d="M-7,0 L0,-7 L7,0 L0,7 Z" fill="none"
+        stroke="#e0a63c" stroke-width="2.2"/>
+      <path d="M-3.5,0 L0,-3.5 L3.5,0 L0,3.5 Z" fill="none"
+        stroke="#e0a63c" stroke-width="1.7600000000000002" opacity="0.8"/>
+    </g>
+</svg>

@@ -1,0 +1,361 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="536" height="560"
+    viewBox="0 0 536 560">
+
+  <defs>
+    <filter id="yumusak" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4"/>
+    </filter>
+    <filter id="cokYumusak" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="9"/>
+    </filter>
+    <filter id="hafifYumusak" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1.6"/>
+    </filter>
+    <filter id="parilti" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="6" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Taş dokusu: ince gürültü -->
+    <filter id="tasDoku" x="0%" y="0%" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" seed="7" result="n"/>
+      <feColorMatrix in="n" type="saturate" values="0" result="g"/>
+      <feComposite in="SourceGraphic" in2="g" operator="arithmetic"
+        k1="0.18" k2="0.86" k3="0" k4="0"/>
+    </filter>
+
+    <!-- Keçe dokusu: yumuşak lekeler -->
+    <filter id="keceDoku" x="0%" y="0%" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="4" seed="3" result="n"/>
+      <feColorMatrix in="n" type="saturate" values="0" result="g"/>
+      <feComposite in="SourceGraphic" in2="g" operator="arithmetic"
+        k1="0.10" k2="0.93" k3="0" k4="0"/>
+    </filter>
+
+    <linearGradient id="gokIsik" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.30"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+
+    <radialGradient id="atesIsik" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ffd98a" stop-opacity="0.95"/>
+      <stop offset="0.5" stop-color="#f2763a" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#f2763a" stop-opacity="0"/>
+    </radialGradient>
+
+    <radialGradient id="buyuIsik" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.9"/>
+      <stop offset="0.45" stop-color="#8ad7ff" stop-opacity="0.6"/>
+      <stop offset="1" stop-color="#8ad7ff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <g transform="translate(268,292)">
+
+    <ellipse cx="0" cy="130" rx="235.52" ry="117.76"
+      fill="#1b1206" opacity="0.34" filter="url(#yumusak)"/>
+    
+    <g>
+      <rect x="-1.6" y="-105.8" width="3.2" height="132"
+        rx="1.4" fill="#5a4632"/>
+      <circle cx="0" cy="-108.8" r="3.4" fill="#e0a63c"/>
+      <path d="M1.6,-101.8
+               L30,-94.8
+               L22,-87.8
+               L30,-80.8
+               L1.6,-77.8 Z"
+        fill="#28446b"/>
+      <path d="M1.6,-101.8
+               L30,-94.8
+               L22,-87.8"
+        fill="#576d8c" opacity="0.6"/>
+      <!-- At kılı püskülü -->
+      <path d="M-1,-103.8 q-7,8 -3,16 M-1,-103.8 q-3,9 1,17"
+        stroke="#2b2118" stroke-width="1.6" fill="none" opacity="0.8"/>
+    </g>
+    
+    <g opacity="1">
+      <path d="M0,0 L-211.2,105.6 L-211.2,96.6 L0,-9 Z" fill="#5a544a"/>
+      <path d="M-211.2,105.6 L0,211.2 L0,202.2 L-211.2,96.6 Z" fill="#433e36"/>
+      <path d="M0,-9 L211.2,96.6 L0,202.2 L-211.2,96.6 Z" fill="#7b756c"/>
+    </g>
+    <g filter="url(#keceDoku)"><g><path d="M-134.4,35
+        A134.4,67.2 0 0 0 -133.25,43.77
+        L-22.84,-63.5
+        A23.04,11.52 0 0 1 -23.04,-65 Z"
+        fill="#e6e1d4"/><path d="M-133.25,43.77
+        A134.4,67.2 0 0 0 -129.82,52.39
+        L-22.25,-62.02
+        A23.04,11.52 0 0 1 -22.84,-63.5 Z"
+        fill="#e5e0d3"/><path d="M-129.82,52.39
+        A134.4,67.2 0 0 0 -124.17,60.72
+        L-21.29,-60.59
+        A23.04,11.52 0 0 1 -22.25,-62.02 Z"
+        fill="#e4dfd1"/><path d="M-124.17,60.72
+        A134.4,67.2 0 0 0 -116.39,68.6
+        L-19.95,-59.24
+        A23.04,11.52 0 0 1 -21.29,-60.59 Z"
+        fill="#e3ded0"/><path d="M-116.39,68.6
+        A134.4,67.2 0 0 0 -106.63,75.91
+        L-18.28,-57.99
+        A23.04,11.52 0 0 1 -19.95,-59.24 Z"
+        fill="#e3ddcf"/><path d="M-106.63,75.91
+        A134.4,67.2 0 0 0 -95.04,82.52
+        L-16.29,-56.85
+        A23.04,11.52 0 0 1 -18.28,-57.99 Z"
+        fill="#e2dccd"/><path d="M-95.04,82.52
+        A134.4,67.2 0 0 0 -81.82,88.31
+        L-14.03,-55.86
+        A23.04,11.52 0 0 1 -16.29,-56.85 Z"
+        fill="#e1dbcc"/><path d="M-81.82,88.31
+        A134.4,67.2 0 0 0 -67.2,93.2
+        L-11.52,-55.02
+        A23.04,11.52 0 0 1 -14.03,-55.86 Z"
+        fill="#e0dacb"/><path d="M-67.2,93.2
+        A134.4,67.2 0 0 0 -51.43,97.08
+        L-8.82,-54.36
+        A23.04,11.52 0 0 1 -11.52,-55.02 Z"
+        fill="#dfd9c9"/><path d="M-51.43,97.08
+        A134.4,67.2 0 0 0 -34.79,99.91
+        L-5.96,-53.87
+        A23.04,11.52 0 0 1 -8.82,-54.36 Z"
+        fill="#dfd8c8"/><path d="M-34.79,99.91
+        A134.4,67.2 0 0 0 -17.54,101.63
+        L-3.01,-53.58
+        A23.04,11.52 0 0 1 -5.96,-53.87 Z"
+        fill="#ded7c7"/><path d="M-17.54,101.63
+        A134.4,67.2 0 0 0 0,102.2
+        L0,-53.48
+        A23.04,11.52 0 0 1 -3.01,-53.58 Z"
+        fill="#ddd6c5"/><path d="M0,102.2
+        A134.4,67.2 0 0 0 17.54,101.63
+        L3.01,-53.58
+        A23.04,11.52 0 0 1 0,-53.48 Z"
+        fill="#d9d2c1"/><path d="M17.54,101.63
+        A134.4,67.2 0 0 0 34.79,99.91
+        L5.96,-53.87
+        A23.04,11.52 0 0 1 3.01,-53.58 Z"
+        fill="#d3cdbc"/><path d="M34.79,99.91
+        A134.4,67.2 0 0 0 51.43,97.08
+        L8.82,-54.36
+        A23.04,11.52 0 0 1 5.96,-53.87 Z"
+        fill="#cec8b8"/><path d="M51.43,97.08
+        A134.4,67.2 0 0 0 67.2,93.2
+        L11.52,-55.02
+        A23.04,11.52 0 0 1 8.82,-54.36 Z"
+        fill="#c9c3b3"/><path d="M67.2,93.2
+        A134.4,67.2 0 0 0 81.82,88.31
+        L14.03,-55.86
+        A23.04,11.52 0 0 1 11.52,-55.02 Z"
+        fill="#c4beaf"/><path d="M81.82,88.31
+        A134.4,67.2 0 0 0 95.04,82.52
+        L16.29,-56.85
+        A23.04,11.52 0 0 1 14.03,-55.86 Z"
+        fill="#bfb9aa"/><path d="M95.04,82.52
+        A134.4,67.2 0 0 0 106.63,75.91
+        L18.28,-57.99
+        A23.04,11.52 0 0 1 16.29,-56.85 Z"
+        fill="#bab4a5"/><path d="M106.63,75.91
+        A134.4,67.2 0 0 0 116.39,68.6
+        L19.95,-59.24
+        A23.04,11.52 0 0 1 18.28,-57.99 Z"
+        fill="#b4afa1"/><path d="M116.39,68.6
+        A134.4,67.2 0 0 0 124.17,60.72
+        L21.29,-60.59
+        A23.04,11.52 0 0 1 19.95,-59.24 Z"
+        fill="#afaa9c"/><path d="M124.17,60.72
+        A134.4,67.2 0 0 0 129.82,52.39
+        L22.25,-62.02
+        A23.04,11.52 0 0 1 21.29,-60.59 Z"
+        fill="#aaa598"/><path d="M129.82,52.39
+        A134.4,67.2 0 0 0 133.25,43.77
+        L22.84,-63.5
+        A23.04,11.52 0 0 1 22.25,-62.02 Z"
+        fill="#a5a093"/><path d="M133.25,43.77
+        A134.4,67.2 0 0 0 134.4,35
+        L23.04,-65
+        A23.04,11.52 0 0 1 22.84,-63.5 Z"
+        fill="#a09b8e"/><path d="M-134.4,35 L-23.04,-65"
+        stroke="#9f9a8e" stroke-width="1.3" opacity="0.40"/><path d="M-129.82,52.39 L-22.25,-62.02"
+        stroke="#9f9a8e" stroke-width="1.3" opacity="0.40"/><path d="M-116.39,68.6 L-19.95,-59.24"
+        stroke="#9f9a8e" stroke-width="1.3" opacity="0.40"/><path d="M-95.04,82.52 L-16.29,-56.85"
+        stroke="#9f9a8e" stroke-width="1.3" opacity="0.40"/><path d="M-67.2,93.2 L-11.52,-55.02"
+        stroke="#9f9a8e" stroke-width="1.3" opacity="0.40"/><path d="M-34.79,99.91 L-5.96,-53.87"
+        stroke="#9f9a8e" stroke-width="1.3" opacity="0.40"/><path d="M0,102.2 L0,-53.48"
+        stroke="#9f9a8e" stroke-width="1.3" opacity="0.40"/><path d="M34.79,99.91 L5.96,-53.87"
+        stroke="#9f9a8e" stroke-width="1.3" opacity="0.40"/><path d="M67.2,93.2 L11.52,-55.02"
+        stroke="#9f9a8e" stroke-width="1.3" opacity="0.40"/><path d="M95.04,82.52 L16.29,-56.85"
+        stroke="#9f9a8e" stroke-width="1.3" opacity="0.40"/><path d="M116.39,68.6 L19.95,-59.24"
+        stroke="#9f9a8e" stroke-width="1.3" opacity="0.40"/><path d="M129.82,52.39 L22.25,-62.02"
+        stroke="#9f9a8e" stroke-width="1.3" opacity="0.40"/><path d="M134.4,35 L23.04,-65"
+        stroke="#9f9a8e" stroke-width="1.3" opacity="0.40"/><path d="M-128,119
+      L-128,35
+      A128,64 0 0 1 128,35
+      L128,119
+      A128,64 0 0 1 -128,119 Z"
+      fill="#d2cbba"/><path d="M-128,119
+        A128,64 0 0 0 -126.9,127.35
+        L-126.9,43.35
+        A128,64 0 0 1 -128,35 Z"
+        fill="#ede6d8"/><path d="M-126.9,127.35
+        A128,64 0 0 0 -123.64,135.56
+        L-123.64,51.56
+        A128,64 0 0 1 -126.9,43.35 Z"
+        fill="#ede6d7"/><path d="M-123.64,135.56
+        A128,64 0 0 0 -118.26,143.49
+        L-118.26,59.49
+        A128,64 0 0 1 -123.64,51.56 Z"
+        fill="#ece5d6"/><path d="M-118.26,143.49
+        A128,64 0 0 0 -110.85,151
+        L-110.85,67
+        A128,64 0 0 1 -118.26,59.49 Z"
+        fill="#ece5d5"/><path d="M-110.85,151
+        A128,64 0 0 0 -101.55,157.96
+        L-101.55,73.96
+        A128,64 0 0 1 -110.85,67 Z"
+        fill="#ebe4d4"/><path d="M-101.55,157.96
+        A128,64 0 0 0 -90.51,164.25
+        L-90.51,80.25
+        A128,64 0 0 1 -101.55,73.96 Z"
+        fill="#ebe4d3"/><path d="M-90.51,164.25
+        A128,64 0 0 0 -77.92,169.77
+        L-77.92,85.77
+        A128,64 0 0 1 -90.51,80.25 Z"
+        fill="#eae3d2"/><path d="M-77.92,169.77
+        A128,64 0 0 0 -64,174.43
+        L-64,90.43
+        A128,64 0 0 1 -77.92,85.77 Z"
+        fill="#eae2d1"/><path d="M-64,174.43
+        A128,64 0 0 0 -48.98,178.13
+        L-48.98,94.13
+        A128,64 0 0 1 -64,90.43 Z"
+        fill="#eae2d0"/><path d="M-48.98,178.13
+        A128,64 0 0 0 -33.13,180.82
+        L-33.13,96.82
+        A128,64 0 0 1 -48.98,94.13 Z"
+        fill="#e9e1cf"/><path d="M-33.13,180.82
+        A128,64 0 0 0 -16.71,182.45
+        L-16.71,98.45
+        A128,64 0 0 1 -33.13,96.82 Z"
+        fill="#e6decd"/><path d="M-16.71,182.45
+        A128,64 0 0 0 0,183
+        L0,99
+        A128,64 0 0 1 -16.71,98.45 Z"
+        fill="#e2dac9"/><path d="M0,183
+        A128,64 0 0 0 16.71,182.45
+        L16.71,98.45
+        A128,64 0 0 1 0,99 Z"
+        fill="#ddd6c5"/><path d="M16.71,182.45
+        A128,64 0 0 0 33.13,180.82
+        L33.13,96.82
+        A128,64 0 0 1 16.71,98.45 Z"
+        fill="#d9d1c1"/><path d="M33.13,180.82
+        A128,64 0 0 0 48.98,178.13
+        L48.98,94.13
+        A128,64 0 0 1 33.13,96.82 Z"
+        fill="#d4cdbd"/><path d="M48.98,178.13
+        A128,64 0 0 0 64,174.43
+        L64,90.43
+        A128,64 0 0 1 48.98,94.13 Z"
+        fill="#d0c9b9"/><path d="M64,174.43
+        A128,64 0 0 0 77.92,169.77
+        L77.92,85.77
+        A128,64 0 0 1 64,90.43 Z"
+        fill="#cbc5b5"/><path d="M77.92,169.77
+        A128,64 0 0 0 90.51,164.25
+        L90.51,80.25
+        A128,64 0 0 1 77.92,85.77 Z"
+        fill="#c7c0b1"/><path d="M90.51,164.25
+        A128,64 0 0 0 101.55,157.96
+        L101.55,73.96
+        A128,64 0 0 1 90.51,80.25 Z"
+        fill="#c3bcad"/><path d="M101.55,157.96
+        A128,64 0 0 0 110.85,151
+        L110.85,67
+        A128,64 0 0 1 101.55,73.96 Z"
+        fill="#beb8a9"/><path d="M110.85,151
+        A128,64 0 0 0 118.26,143.49
+        L118.26,59.49
+        A128,64 0 0 1 110.85,67 Z"
+        fill="#bab3a5"/><path d="M118.26,143.49
+        A128,64 0 0 0 123.64,135.56
+        L123.64,51.56
+        A128,64 0 0 1 118.26,59.49 Z"
+        fill="#b5afa1"/><path d="M123.64,135.56
+        A128,64 0 0 0 126.9,127.35
+        L126.9,43.35
+        A128,64 0 0 1 123.64,51.56 Z"
+        fill="#b1ab9d"/><path d="M126.9,127.35
+        A128,64 0 0 0 128,119
+        L128,35
+        A128,64 0 0 1 126.9,43.35 Z"
+        fill="#aca699"/><path d="M-128,37
+      A128,64 0 0 0 128,37
+      L128,46
+      A128,64 0 0 1 -128,46 Z"
+      fill="#b7362c" opacity="0.9"/><path d="M-134.4,35
+      A134.4,67.2 0 0 0 134.4,35"
+      fill="none" stroke="#928d82" stroke-width="2" opacity="0.5"/><ellipse cx="0" cy="-65"
+      rx="29.95" ry="14.98" fill="#5e472c"/><ellipse cx="0" cy="-66"
+      rx="20.74" ry="10.37" fill="#1b1206" opacity="0.75"/><path d="M-20.74,-66 L20.74,-66
+      M0,-76.37 L0,-55.63"
+      stroke="#5e472c" stroke-width="1.5" opacity="0.9"/></g></g>
+    
+    <g>
+      <path d="M-20,165.08 L-20,121.08
+               Q0,107.08 20,121.08
+               L20,165.08 Z" fill="#5e472c"/>
+      <path d="M-15,165.08 L-15,123.08
+               Q0,112.08 15,123.08
+               L15,165.08 Z" fill="#7f2520"/>
+      <path d="M-15,165.08 L0,125.08
+               L15,165.08 Z" fill="#000" opacity="0.18"/>
+    </g>
+    <g transform="translate(0,135.07999999999998) scale(1.2)">
+      <path d="M0,-7 L0,5 M-8,-3 L0,-6 L8,-3 M-5,3 L0,0 L5,3 M-3,-7 L0,-4 L3,-7" fill="none" stroke="#e0a63c" stroke-width="1.6666666666666667"
+        stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    
+    <g>
+      <rect x="184" y="11" width="3.2" height="108"
+        rx="1.4" fill="#5a4632"/>
+      <circle cx="185.6" cy="8" r="3.4" fill="#e0a63c"/>
+      <path d="M187.2,15
+               L215.6,22
+               L207.6,29
+               L215.6,36
+               L187.2,39 Z"
+        fill="#b7362c"/>
+      <path d="M187.2,15
+               L215.6,22
+               L207.6,29"
+        fill="#c7625a" opacity="0.6"/>
+      <!-- At kılı püskülü -->
+      <path d="M184.6,13 q-7,8 -3,16 M184.6,13 q-3,9 1,17"
+        stroke="#2b2118" stroke-width="1.6" fill="none" opacity="0.8"/>
+    </g>
+    
+    <g>
+      <rect x="-187.2" y="23" width="3.2" height="96"
+        rx="1.4" fill="#5a4632"/>
+      <circle cx="-185.6" cy="20" r="3.4" fill="#e0a63c"/>
+      <path d="M-184,27
+               L-155.6,34
+               L-163.6,41
+               L-155.6,48
+               L-184,51 Z"
+        fill="#e0a63c"/>
+      <path d="M-184,27
+               L-155.6,34
+               L-163.6,41"
+        fill="#e7ba67" opacity="0.6"/>
+      <!-- At kılı püskülü -->
+      <path d="M-186.6,25 q-7,8 -3,16 M-186.6,25 q-3,9 1,17"
+        stroke="#2b2118" stroke-width="1.6" fill="none" opacity="0.8"/>
+    </g>
+  
+  </g>
+</svg>

@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="280" height="332"
+    viewBox="0 0 280 332">
+
+  <defs>
+    <filter id="yumusak" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4"/>
+    </filter>
+    <filter id="cokYumusak" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="9"/>
+    </filter>
+    <filter id="hafifYumusak" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1.6"/>
+    </filter>
+    <filter id="parilti" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="6" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Taş dokusu: ince gürültü -->
+    <filter id="tasDoku" x="0%" y="0%" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" seed="7" result="n"/>
+      <feColorMatrix in="n" type="saturate" values="0" result="g"/>
+      <feComposite in="SourceGraphic" in2="g" operator="arithmetic"
+        k1="0.18" k2="0.86" k3="0" k4="0"/>
+    </filter>
+
+    <!-- Keçe dokusu: yumuşak lekeler -->
+    <filter id="keceDoku" x="0%" y="0%" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="4" seed="3" result="n"/>
+      <feColorMatrix in="n" type="saturate" values="0" result="g"/>
+      <feComposite in="SourceGraphic" in2="g" operator="arithmetic"
+        k1="0.10" k2="0.93" k3="0" k4="0"/>
+    </filter>
+
+    <linearGradient id="gokIsik" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.30"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+
+    <radialGradient id="atesIsik" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ffd98a" stop-opacity="0.95"/>
+      <stop offset="0.5" stop-color="#f2763a" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#f2763a" stop-opacity="0"/>
+    </radialGradient>
+
+    <radialGradient id="buyuIsik" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.9"/>
+      <stop offset="0.45" stop-color="#8ad7ff" stop-opacity="0.6"/>
+      <stop offset="1" stop-color="#8ad7ff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <g transform="translate(140,192)">
+
+    <ellipse cx="0" cy="66" rx="117.76" ry="58.88"
+      fill="#1b1206" opacity="0.3" filter="url(#yumusak)"/>
+    
+    <g opacity="1">
+      <path d="M0,0 L-83.2,41.6 L-83.2,33.6 L0,-8 Z" fill="#5a544a"/>
+      <path d="M-83.2,41.6 L0,83.2 L0,75.2 L-83.2,33.6 Z" fill="#433e36"/>
+      <path d="M0,-8 L83.2,33.6 L0,75.2 L-83.2,33.6 Z" fill="#7b756c"/>
+    </g>
+    <!-- Göktaşı dikilitaş -->
+    <path d="M-15,56 L-10,-28
+             L2,-40 L13,-24
+             L16,56 Z" fill="#28446b"/>
+    <path d="M-15,56 L-10,-28
+             L2,-40 L1,56 Z"
+      fill="#536989"/>
+    <g transform="translate(-4,6) scale(0.9)">
+      <path d="M-8,0 C-4,-5 4,-5 8,0 C4,5 -4,5 -8,0 Z M0,0 L0,0" fill="none" stroke="#7fd4e8" stroke-width="2.2222222222222223"
+        stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <g transform="translate(-4,34) scale(0.8)">
+      <path d="M-8,-2 q4,-4 8,0 t8,0 M-8,4 q4,-4 8,0 t8,0" fill="none" stroke="#7fd4e8" stroke-width="2.25"
+        stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    
+    <g>
+      <ellipse cx="0" cy="-36" rx="34" ry="18.7" fill="url(#buyuIsik)"/>
+      <circle cx="13.6" cy="-47.9"
+        r="1.36" fill="#7fd4e8" opacity="0.5"/><circle cx="12.19" cy="-55.55"
+        r="1.95" fill="#7fd4e8" opacity="0.66"/><circle cx="-5.67" cy="-63.2"
+        r="2.55" fill="#7fd4e8" opacity="0.8200000000000001"/><circle cx="-12.25" cy="-70.85"
+        r="1.36" fill="#7fd4e8" opacity="0.5"/><circle cx="-17.61" cy="-47.9"
+        r="1.95" fill="#7fd4e8" opacity="0.66"/><circle cx="-5.67" cy="-55.55"
+        r="2.55" fill="#7fd4e8" opacity="0.8200000000000001"/><circle cx="8.48" cy="-63.2"
+        r="1.36" fill="#7fd4e8" opacity="0.5"/>
+    </g>
+  
+  </g>
+</svg>
