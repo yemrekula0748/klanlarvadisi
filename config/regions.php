@@ -42,14 +42,14 @@ return [
 
     ['key' => 'bozkir', 'name' => 'Uçsuz Bozkır', 'biome' => 'bozkir',
         'at' => [0.62, 0.44], 'radius' => 0.14, 'color' => '#8fa05a',
-        'terrain' => ['e' => 0.38, 't' => 0.52, 'm' => 0.4, 'strength' => 0.8],
+        'terrain' => ['e' => 0.38, 't' => 0.52, 'm' => 0.34, 'strength' => 0.95],
         'bonus' => ['grain' => 1.2],
         'lore' => 'Göz alabildiğine ot, ot, ot. At burada doğar, burada ölür. '
             .'Yurt kuranın da, yurdunu bozanın da yolu buradan geçer.'],
 
     ['key' => 'yada_golu', 'name' => 'Yada Gölü', 'biome' => 'bataklik',
         'at' => [0.71, 0.62], 'radius' => 0.065, 'color' => '#4a8fa8',
-        'terrain' => ['e' => 0.19, 't' => 0.50, 'm' => 0.88, 'strength' => 0.92],
+        'terrain' => ['e' => 0.25, 't' => 0.50, 'm' => 0.88, 'strength' => 0.97],
         'bonus' => ['kut' => 1.25],
         'lore' => 'Suyuna atılan taş yağmur çağırır. Kamlar yada taşını '
             .'bu gölün dibinden çıkarır; ama her dalan geri dönmez.'],
@@ -84,7 +84,7 @@ return [
 
     ['key' => 'erlik_yurdu', 'name' => 'Erlik Yurdu', 'biome' => 'bataklik',
         'at' => [0.56, 0.88], 'radius' => 0.085, 'color' => '#4a2d4a',
-        'terrain' => ['e' => 0.24, 't' => 0.44, 'm' => 0.82, 'strength' => 0.9],
+        'terrain' => ['e' => 0.25, 't' => 0.44, 'm' => 0.82, 'strength' => 0.97],
         'bonus' => ['iron' => 1.15, 'kut' => 1.2],
         'lore' => 'Yerin dibine açılan dokuz kuyu. Erlik Han\'ın kara otağı '
             .'buradadır; dumanı göğe değil, aşağı çeker.'],

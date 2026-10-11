@@ -52,24 +52,42 @@ class WorldTest extends GameTestCase
         $w = config('game.world.width');
         $h = config('game.world.height');
 
-        $matches = 0;
-        $total = 0;
+        // Tek bir merkez karesine bakmak yetmiyor: çekirdeğinin %78'i çayır
+        // olan bir bölge, merkezdeki tek bozkır karesi yüzünden "uyuyor"
+        // görünebiliyordu. Bölgenin çekirdeğini örnekleyip ilan edilen
+        // biyomun orada BASKIN olmasını arıyoruz.
+        $uyusmayanlar = [];
 
         foreach (config('regions') as $region) {
-            $x = (int) round($region['at'][0] * $w);
-            $y = (int) round($region['at'][1] * $h);
-            $terrain = $world->terrainAt($x, $y);
-            $total++;
-            if ($terrain['biome'] === $region['biome']) {
-                $matches++;
+            $cx = (int) round($region['at'][0] * $w);
+            $cy = (int) round($region['at'][1] * $h);
+            $yaricap = (int) round($region['radius'] * $w * 0.5);
+
+            $sayim = [];
+            for ($dy = -$yaricap; $dy <= $yaricap; $dy += max(1, (int) ($yaricap / 6))) {
+                for ($dx = -$yaricap; $dx <= $yaricap; $dx += max(1, (int) ($yaricap / 6))) {
+                    if ($dx * $dx + $dy * $dy > $yaricap * $yaricap) {
+                        continue;
+                    }
+                    $biyom = $world->terrainAt($cx + $dx, $cy + $dy)['biome'];
+                    $sayim[$biyom] = ($sayim[$biyom] ?? 0) + 1;
+                }
+            }
+
+            // Nehirler her biyomun üstünden geçebilir; baskınlık ölçümünde sayma.
+            unset($sayim['nehir']);
+            arsort($sayim);
+            $baskin = array_key_first($sayim);
+
+            if ($baskin !== $region['biome']) {
+                $uyusmayanlar[] = sprintf(
+                    '%s: ilan "%s", çekirdekte baskın "%s"',
+                    $region['name'], $region['biome'], $baskin
+                );
             }
         }
 
-        $this->assertGreaterThanOrEqual(
-            (int) ($total * 0.8),
-            $matches,
-            'Bölgelerin en az %80\'i kendi arazi tipinde olmalı (Kızıl Çöl çöl, Tanrı Dağı karlı)'
-        );
+        $this->assertSame([], $uyusmayanlar, "Bölgeler kendi arazisinde değil:\n".implode("\n", $uyusmayanlar));
     }
 
     public function test_deniz_karesine_oba_kurulamaz(): void

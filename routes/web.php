@@ -57,7 +57,7 @@ Route::get('/', function () {
         'reverbPort'   => config('broadcasting.connections.reverb.options.port'),
         'reverbAnahtar' => config('broadcasting.connections.reverb.key'),
         'onizlemeler'  => collect([
-            'oba'            => 'Oba görünümü',
+            'oba-kucuk'      => 'Oba görünümü',
             'dunya-bolgeler' => 'Dünya haritası ve bölgeler',
             'dunya-yakin'    => 'Arazi yakın plan',
         ])->filter(fn ($_, $ad) => is_file(base_path("docs/onizleme/{$ad}.png"))),

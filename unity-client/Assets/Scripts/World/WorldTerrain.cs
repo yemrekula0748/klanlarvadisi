@@ -102,7 +102,15 @@ namespace KlanlarVadisi.World
                 var dist = Mathf.Sqrt(dx * dx + dy * dy);
                 if (dist >= s.R) continue;
 
-                var w = SmoothStep(1f - dist / s.R) * s.S;
+                // Gürültüyle bozulmuş sınır + çekirdekte plato —
+                // WorldService::terrainAt() ile birebir aynı; iki taraf
+                // ayrışırsa Unity sunucudan başka bir dünya çizer ve oba
+                // yanlış arazinin üstünde görünür.
+                var kirik = 0.78f + 0.44f * _noise.Fbm(x / 90f, y / 90f, 3, 2f, 0.5f, 97);
+                var t = 1f - (dist * kirik) / s.R;
+                if (t <= 0f) continue;
+
+                var w = SmoothStep(Mathf.Min(1f, t * 1.7f)) * s.S;
                 elevation += (s.E - elevation) * w;
                 temperature += (s.T - temperature) * w;
                 moisture += (s.M - moisture) * w;

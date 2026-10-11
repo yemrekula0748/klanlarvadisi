@@ -49,39 +49,73 @@ class WorldSeeder extends Seeder
         $this->topUp('harabe', 400, fn () => $this->makeRuin());
     }
 
-    /** Türü hedef adede kadar tamamlar. */
+    /**
+     * Türü hedef adede kadar tamamlar.
+     *
+     * Üretici her çağrıda yerleştiremeyebilir (randomSpot 80 denemede boş
+     * kare bulamazsa vazgeçer). Bu yüzden sabit sayıda çağrı yetmez:
+     * gerçek sayıyı ölçerek ilerliyoruz, yoksa ilk tohumlama hedefin
+     * altında kalıyor ve bir sonraki çalıştırma farkı kapatıyordu — dünya
+     * tohumu da böylece "her çalıştırmada değişen" bir şeye dönüşüyordu.
+     */
     private function topUp(string $type, int $target, callable $maker): void
     {
-        $have = WorldTile::where('type', $type)->count();
-        for ($i = $have; $i < $target; $i++) {
+        $adet = WorldTile::where('type', $type)->count();
+
+        // Sonsuz döngüye karşı: her eksik için en çok üç deneme.
+        $kalanDeneme = max(0, $target - $adet) * 3;
+
+        while ($adet < $target && $kalanDeneme-- > 0) {
             $maker();
+            $adet = WorldTile::where('type', $type)->count();
         }
     }
 
-    /** Her bölgenin merkezine, o bölgenin adını taşıyan kutsal alan koyar. */
+    /**
+     * Her bölgenin merkezine, o bölgenin adını taşıyan kutsal alan koyar.
+     *
+     * Eşleştirme bölgeye göre yapılır, koordinata göre değil: ikinci kez
+     * tohumlandığında bölge merkezi artık dolu olduğu için
+     * nearestFreeLand() komşu bir kare döndürür, koordinatla eşleşen bir
+     * updateOrCreate ise orada ikinci bir kutsal alan açardı. (Açmıştı da:
+     * 16 bölge için 32 kayıt oluşuyordu.)
+     */
     private function seedSacredSites(): void
     {
         foreach (WorldRegion::all() as $region) {
+            $mevcut = WorldTile::where('region_id', $region->id)
+                ->where('type', 'kutsal_alan')
+                ->first();
+
+            if ($mevcut) {
+                // Yeri sabit kalsın, yalnızca bölgeden gelen bilgiler tazelensin.
+                $mevcut->update($this->sacredSiteData($region));
+                continue;
+            }
+
             [$x, $y] = $this->nearestFreeLand($region->center_x, $region->center_y, 24);
             if ($x === null) {
                 continue;
             }
 
-            WorldTile::updateOrCreate(
-                ['x' => $x, 'y' => $y],
-                [
-                    'type'      => 'kutsal_alan',
-                    'region_id' => $region->id,
-                    'label'     => $region->name,
-                    'power'     => 10,
-                    'data'      => [
-                        'region' => $region->key,
-                        'bonus'  => $region->bonus,
-                        'lore'   => $region->lore,
-                    ],
-                ]
-            );
+            WorldTile::create(['x' => $x, 'y' => $y] + $this->sacredSiteData($region));
         }
+    }
+
+    /** Kutsal alanın bölgeden türeyen alanları. */
+    private function sacredSiteData(WorldRegion $region): array
+    {
+        return [
+            'type'      => 'kutsal_alan',
+            'region_id' => $region->id,
+            'label'     => $region->name,
+            'power'     => 10,
+            'data'      => [
+                'region' => $region->key,
+                'bonus'  => $region->bonus,
+                'lore'   => $region->lore,
+            ],
+        ];
     }
 
     private function makeCamp(): void

@@ -1,5 +1,10 @@
 * text=auto eol=lf
 
+# Toplu is dosyalari CRLF olmali: LF satir sonlariyla cmd'nin
+# goto/call bloklari bozulabiliyor.
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
 *.blade.php diff=html
 *.css diff=css
 *.html diff=html

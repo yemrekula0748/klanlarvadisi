@@ -1,6 +1,6 @@
 # Klanlar Vadisi — Unity İstemcisi
 
-Unity **6000.0 LTS** (2022.3 LTS de çalışır) ile açın:
+Unity **6000.0.32f1** (ya da daha yeni bir 6000.0.x) ile açın:
 Unity Hub → **Add** → bu klasörü seçin → `Assets/Scenes/Oyun.unity`.
 
 Sunucu `http://localhost:8000` üzerinde çalışıyor olmalıdır

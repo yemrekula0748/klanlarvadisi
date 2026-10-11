@@ -14,6 +14,7 @@ on altı mitolojik bölgeden birine yerleş.
 
 - [Mimari](#mimari)
 - [Hızlı başlangıç](#hızlı-başlangıç)
+- [Yerel kurulum kılavuzu](docs/LOKAL-KURULUM.md)
 - [Sunucu kurulumu](#sunucu-kurulumu)
 - [Unity istemcisi](#unity-istemcisi)
 - [Oyun tasarımı](#oyun-tasarımı)
@@ -57,21 +58,40 @@ yalnızca "dolu" kareler gelir: obalar, mitolojik kamplar, kaynak damarları.
 
 ## Hızlı başlangıç
 
+**Kendi bilgisayarınızda ilk kez çalıştırıyorsanız** kurulum betiği her şeyi
+yapar (araç denetimi, bağımlılıklar, veritabanı, örnek dünya, sunucu + Reverb):
+
+```bash
+chmod +x kur.sh && ./kur.sh     # macOS / Linux
+kur.bat                         # Windows
+```
+
+Adım adım anlatım, gereken araçlar ve sık sorunlar:
+**[docs/LOKAL-KURULUM.md](docs/LOKAL-KURULUM.md)**
+
+Elle kurmak isterseniz:
+
 ```bash
 # 1) Sunucu
 composer install
 cp .env.example .env
 php artisan key:generate
 
-# MySQL veritabanını oluştur, sonra:
+# Varsayılan SQLite'tır; MySQL kullanacaksanız veritabanını açıp
+# .env'de DB_* değerlerini ayarlayın. Sonra:
 php artisan migrate --seed          # katalog + dünya
 php artisan game:demo --players=40  # örnek oyuncular ve boylar
-php artisan serve                   # http://localhost:8000
+
+php artisan dev                     # sunucu + Reverb + kuyruk, tek komut
+# ya da yalnızca sunucu:  php artisan serve
 
 # 2) Unity
-# unity-client/ klasörünü Unity Hub'a ekle (Unity 6000.0 LTS)
+# unity-client/ klasörünü Unity Hub'a ekle (Unity 6000.0.32f1)
 # Assets/Scenes/Oyun.unity sahnesini aç ve Play'e bas
 ```
+
+Sunucu ayağa kalkınca <http://localhost:8000> adresi durum sayfasını,
+katalog sayılarını, hazır giriş bilgisini ve önizleme görsellerini gösterir.
 
 Örnek giriş: `alpagut@klanlarvadisi.test` / `sifre1234`
 veya giriş ekranında **Konuk Olarak Dene**.
@@ -84,10 +104,10 @@ veya giriş ekranında **Konuk Olarak Dene**.
 
 | Bileşen | Sürüm |
 |---------|-------|
-| PHP     | 8.3+ (`pdo_mysql`, `bcmath`, `intl`, `gd`, `zip`) |
-| MySQL   | 8.0+ |
-| Composer| 2.x |
-| Node.js | 20+ (yalnızca görsel üretimi için) |
+| PHP      | 8.3+ (`mbstring`, `curl`, `dom`, `xml`, `openssl`, `pdo_sqlite`) |
+| Veritabanı | SQLite (varsayılan, kurulum gerekmez) — ya da MySQL 8.0+ (`pdo_mysql`) |
+| Composer | 2.x |
+| Node.js  | 20+ (yalnızca görsel üretimi için; `gd`/`zip` de oradaki araçlar içindir) |
 
 ### Adımlar
 
@@ -152,7 +172,7 @@ sessizce yoklamaya düşer, oyun oynanmaya devam eder.
 ### Açmak
 
 1. Unity Hub → **Add** → `unity-client/` klasörünü seçin
-2. Unity **6000.0 LTS** (veya 2022.3 LTS) ile açın
+2. Unity **6000.0.32f1** (ya da daha yeni bir 6000.0.x) ile açın
 3. `Assets/Scenes/Oyun.unity` sahnesini açın
 4. Play
 

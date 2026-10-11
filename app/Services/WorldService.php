@@ -127,7 +127,18 @@ class WorldService
             if ($d >= $s['r']) {
                 continue;
             }
-            $wgt = self::smoothstep(1.0 - $d / $s['r']) * $s['s'];
+            // Bölge sınırı gürültüyle bozulur, yoksa her bölge haritaya
+            // basılmış kusursuz bir daire olarak görünüyor. Çekirdekte düz
+            // plato var: düz smoothstep'te yalnızca tam merkez hedefe
+            // ulaşıyordu ve dar bantlı biyomlar (bataklık 0.21-0.29)
+            // bölgenin çekirdeğinde bile oluşamıyordu.
+            // DİKKAT: WorldTerrain.cs ile birebir aynı kalmalı.
+            $kirik = 0.78 + 0.44 * $this->noise->fbm($x / 90.0, $y / 90.0, 3, 2.0, 0.5, 97);
+            $t = 1.0 - ($d * $kirik) / $s['r'];
+            if ($t <= 0.0) {
+                continue;
+            }
+            $wgt = self::smoothstep(min(1.0, $t * 1.7)) * $s['s'];
             $elevation += ($s['e'] - $elevation) * $wgt;
             $temperature += ($s['t'] - $temperature) * $wgt;
             $moisture += ($s['m'] - $moisture) * $wgt;
