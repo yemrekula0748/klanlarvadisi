@@ -10,6 +10,7 @@ import { PALETTE as P, BIOME_COLORS } from './lib/palette.mjs';
 import * as iso from './lib/iso.mjs';
 import { tree, rocks } from './lib/parts.mjs';
 import { wrapFlat } from './lib/render.mjs';
+import { SUS_ZEMIN_PAYI } from './lib/anchors.mjs';
 
 const TW = iso.TILE_W, TH = iso.TILE_H;
 const f = (n) => Math.round(n * 100) / 100;
@@ -89,7 +90,7 @@ export const nehir = () => tile(C.nehir, `
 /* --- Süsler (harita üstüne serpilir) ------------------------------ */
 
 const deco = (body, w = 72, h = 80) => wrapFlat({ width: w, height: h, body: `
-  <ellipse cx="${w / 2}" cy="${h - 8}" rx="16" ry="6" fill="#1b1206" opacity="0.22"
+  <ellipse cx="${w / 2}" cy="${h - SUS_ZEMIN_PAYI}" rx="16" ry="6" fill="#1b1206" opacity="0.22"
     filter="url(#hafifYumusak)"/>${body}` });
 
 export const sus_cam = () => deco(tree({ cx: 36, cy: 70, scale: 1.0, kind: 'cam' }));
@@ -109,7 +110,7 @@ export const sus_kaktus = () => deco(`
 /* --- Harita işaretleri -------------------------------------------- */
 
 const marker = (body) => wrapFlat({ width: 64, height: 72, body: `
-  <ellipse cx="32" cy="64" rx="13" ry="5" fill="#1b1206" opacity="0.3"
+  <ellipse cx="32" cy="${72 - SUS_ZEMIN_PAYI}" rx="13" ry="5" fill="#1b1206" opacity="0.3"
     filter="url(#hafifYumusak)"/>${body}` });
 
 export const isaret_oba = () => marker(`

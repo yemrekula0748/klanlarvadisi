@@ -6,7 +6,7 @@
  *   node tools/art/build.mjs buildings  # sadece binalar
  *
  * Çıktı:
- *   unity-client/Assets/Art/<grup>/<ad>.png   (Unity doğrudan içe alır)
+ *   unity-client/Assets/Resources/Art/<grup>/<ad>.png   (Unity doğrudan içe alır)
  *   tools/art/out/svg/<grup>/<ad>.svg          (kaynak, sürüm takibi için)
  */
 

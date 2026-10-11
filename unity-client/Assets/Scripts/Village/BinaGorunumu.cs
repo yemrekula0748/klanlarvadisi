@@ -51,9 +51,10 @@ namespace KlanlarVadisi.Village
 
             _sr.sprite = SpriteKutuphanesi.Bina(veri.key);
 
-            // İzometrik sprite'lar ayak izinin ortasına hizalanır. Sprite'ın
-            // alt orta noktası binanın ön köşesine denk gelecek biçimde
-            // konumlandırılır.
+            // Bina sprite'larının pivotu, ayak izinin arka köşesine (yani
+            // ızgara (x,y) noktasına) denk gelecek biçimde .meta dosyasında
+            // ayarlanır — bkz. tools/unity/gen-meta.mjs -> binaPivotu().
+            // Bu yüzden nesne doğrudan o ızgara noktasına konur.
             transform.position = Izometri.IzgaradanDunyaya(veri.x, veri.y);
             _sr.sortingOrder = Izometri.SiralamaDegeri(veri.x + veri.w * 0.5f, veri.y + veri.h * 0.5f);
 
@@ -61,7 +62,7 @@ namespace KlanlarVadisi.Village
             var genislik = (veri.w + veri.h) * (Izometri.KareGenislik / Izometri.PikselBirim) * 0.5f;
             var yukseklik = (veri.w + veri.h) * (Izometri.KareYukseklik / Izometri.PikselBirim) * 0.5f;
             _carpisma.size = new Vector2(genislik * 0.8f, yukseklik * 0.9f);
-            _carpisma.offset = new Vector2(0f, -yukseklik * 0.5f + yukseklik * 0.25f);
+            _carpisma.offset = new Vector2(0f, -yukseklik * 0.5f);
 
             _secimHalkasi.transform.localPosition = new Vector3(0f, -yukseklik * 0.5f, 0f);
             _secimHalkasi.transform.localScale = new Vector3(veri.w * 0.9f, veri.h * 0.9f, 1f);

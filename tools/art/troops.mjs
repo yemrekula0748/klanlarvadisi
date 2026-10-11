@@ -10,9 +10,10 @@ import { PALETTE as P } from './lib/palette.mjs';
 import { shade } from './lib/iso.mjs';
 import { damga } from './lib/ornament.mjs';
 import { wrapFlat } from './lib/render.mjs';
+import { ASKER } from './lib/anchors.mjs';
 
-const W = 96, H = 112;         // sprite tuvali
-const GX = W / 2, GY = H - 10; // ayak noktası
+const W = ASKER.w, H = ASKER.h;              // sprite tuvali
+const GX = W / 2, GY = H - ASKER.zeminPayi;  // ayak noktası (bkz. lib/anchors.mjs)
 const f = (n) => Math.round(n * 100) / 100;
 
 /* ------------------------------------------------------------------ */
